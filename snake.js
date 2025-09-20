@@ -1,4 +1,10 @@
+
+
 let canvas = document.getElementById('canvas');
+let score = document.getElementById('score');
+let score1 = 0;
+
+
 let cxt = canvas.getContext('2d')
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -60,6 +66,8 @@ function eatfood(){
     snake.y < food.y + 20 &&
     snake.y + snake.height > food.y){
        snake.width += 20;
+       score1++;
+       score.innerText = `SCORE: ${score1}`;
        food.x = Math.floor(Math.random() * (canvas.width - 20));
        food.y = Math.floor(Math.random() * (canvas.height - 20));
     }
