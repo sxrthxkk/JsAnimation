@@ -35,13 +35,20 @@ canvas.height = window.innerHeight;})
 
 
 function animate(){ 
+      if(snake.x < 0 || snake.x + snake.width > canvas.width ||
+       snake.y < 0 || snake.y + snake.height > canvas.height){
+        alert("Game Over!");
+        return; 
+    }
     cxt.clearRect(0,0,canvas.width,canvas.height)
     cxt.fillStyle = "green"
     snake.x += snake.dx;
     snake.y += snake.dy;
     cxt.fillRect(snake.x,snake.y,snake.width,snake.height);
+      
     eatfood();
-requestAnimationFrame(animate)
+    requestAnimationFrame(animate)
+
 }
 
 animate();
