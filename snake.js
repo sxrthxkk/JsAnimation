@@ -10,16 +10,16 @@ let snake = {
 }
 window.addEventListener('keydown',(e)=>{
   if(e.key == "ArrowUp") {
-    snake.dy = -2;
+    snake.dy = -2; snake.dx = 0;
   }
   if(e.key == "ArrowDown") {
-   snake.dy = 2;
+   snake.dy = 2; snake.dx = 0;
   }
   if(e.key == "ArrowLeft") {
-    snake.dx = -2; 
+    snake.dx = -2; snake.dy = 0;
   }
   if(e.key == "ArrowRight") {
-    snake.dx = 2; 
+    snake.dx = 2; snake.dy = 0 
   }
 });
 
