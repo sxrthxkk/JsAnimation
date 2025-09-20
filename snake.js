@@ -6,7 +6,13 @@ let snake = {
     x: 100,
     y: 100,
     dx: 0,
-    dy: 0
+    dy: 0,
+    width:20,
+    height:20
+}
+let food = {
+    x: Math.floor(Math.random() * (canvas.width - 20)),
+    y: Math.floor(Math.random() * (canvas.height - 20)),
 }
 window.addEventListener('keydown',(e)=>{
   if(e.key == "ArrowUp") {
@@ -33,8 +39,21 @@ function animate(){
     cxt.fillStyle = "green"
     snake.x += snake.dx;
     snake.y += snake.dy;
-    cxt.fillRect(snake.x,snake.y,20,20)
+    cxt.fillRect(snake.x,snake.y,snake.width,snake.height);
+    eatfood();
 requestAnimationFrame(animate)
 }
 
 animate();
+function eatfood(){
+    cxt.fillStyle = "white";
+    cxt.fillRect(food.x,food.y,20,20);
+    if(snake.x < food.x + 20 &&
+    snake.x + snake.width > food.x &&
+    snake.y < food.y + 20 &&
+    snake.y + snake.height > food.y){
+       snake.width += 20;
+       food.x = Math.floor(Math.random() * (canvas.width - 20));
+       food.y = Math.floor(Math.random() * (canvas.height - 20));
+    }
+}
